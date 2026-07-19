@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#05090b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Souffle">
+  <meta name="description" content="Guide personnel de respiration cyclique">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="app.css">
+  <title>Souffle</title>
+</head>
+<body>
+  <div id="app">
+    <section id="safety-screen" class="screen safety-screen hidden" aria-labelledby="safety-title">
+      <main class="scroll-page narrow">
+        <div class="hero-icon" aria-hidden="true">♡</div>
+        <h1 id="safety-title">Avant de commencer</h1>
+        <p class="lead">Cette respiration peut provoquer des picotements, des étourdissements et, rarement, une perte de connaissance.</p>
+        <ul class="safety-list">
+          <li><span>◉</span><p>Pratique toujours assis ou allongé, sans forcer.</p></li>
+          <li><span>≈</span><p>Jamais dans ou près de l’eau, sous la douche ou dans un bain.</p></li>
+          <li><span>×</span><p>Jamais en conduisant, debout, ou dans une situation où un malaise serait dangereux.</p></li>
+          <li><span>!</span><p>Arrête immédiatement en cas de douleur, malaise important ou symptôme inhabituel.</p></li>
+        </ul>
+        <p class="fine-print">Cette application accompagne une pratique de bien-être et ne fournit pas de conseil médical. En cas de problème de santé, demande l’avis d’un professionnel.</p>
+        <button id="accept-safety" class="primary-button">J’ai compris — continuer</button>
+      </main>
+    </section>
+
+    <section id="main-screen" class="screen hidden">
+      <main id="home-page" class="tab-page scroll-page">
+        <header class="home-hero">
+          <div class="wind-icon" aria-hidden="true">≋</div>
+          <h1>Un temps pour respirer</h1>
+          <p>Aucun objectif. Seulement le rythme, les sensations et le moment présent.</p>
+        </header>
+
+        <div class="settings-panel">
+          <div class="setting-row">
+            <div><strong>Nombre de cycles</strong><small>30 respirations par cycle</small></div>
+            <div class="stepper">
+              <button id="rounds-minus" aria-label="Retirer un cycle">−</button>
+              <output id="rounds-value">3</output>
+              <button id="rounds-plus" aria-label="Ajouter un cycle">+</button>
+            </div>
+          </div>
+          <div class="setting-block">
+            <label for="control-mode">Fin de la rétention</label>
+            <select id="control-mode">
+              <option value="tap">Toucher l’écran</option>
+              <option value="sound">Écouter l’inspiration</option>
+              <option value="both" selected>Les deux</option>
+            </select>
+            <p id="privacy-note" class="micro-note">◉ Le son est analysé sur cet appareil et n’est jamais enregistré.</p>
+          </div>
+        </div>
+
+        <button id="start-preparation" class="primary-button">Commencer la séance</button>
+        <p class="safe-reminder">◇ À pratiquer assis ou allongé, dans un endroit sûr.</p>
+      </main>
+
+      <main id="history-page" class="tab-page scroll-page hidden">
+        <h1>Ton parcours</h1>
+        <p class="muted">Une trace douce de tes séances. Il n’y a ni record, ni série à maintenir, ni comparaison.</p>
+        <div id="history-empty" class="empty-state">
+          <div>⌁</div><h2>Ton parcours apparaîtra ici</h2>
+          <p>Les temps sont conservés comme des repères, jamais comme des objectifs.</p>
+        </div>
+        <div id="history-content" class="hidden">
+          <div class="chart-wrap"><svg id="history-chart" viewBox="0 0 600 240" role="img" aria-label="Évolution douce des durées moyennes"></svg></div>
+          <div id="history-list" class="history-list"></div>
+          <button id="clear-history" class="text-button danger">Effacer le parcours</button>
+        </div>
+      </main>
+
+      <main id="about-page" class="tab-page scroll-page hidden">
+        <h1>À savoir</h1>
+        <section class="info-section"><h2>La séance</h2><ul>
+          <li>30 respirations guidées</li><li>Rétention libre après l’expiration</li>
+          <li>Grande inspiration gardée 15 secondes</li><li>De 1 à 10 cycles</li>
+        </ul></section>
+        <section class="info-section"><h2>L’esprit</h2>
+          <p>Les temps servent uniquement à observer ton parcours. Une séance plus courte ou plus longue n’est ni meilleure ni moins bonne.</p>
+          <p>Ne cherche jamais à dépasser une gêne importante. Reprendre de l’air est toujours la bonne décision lorsque ton corps le demande.</p>
+        </section>
+        <section class="info-section"><h2>Sécurité et vie privée</h2>
+          <p>Pratique assis ou allongé, dans un lieu où un éventuel malaise ne présente aucun danger.</p>
+          <p>Ne pratique jamais dans ou près de l’eau, sous la douche, dans un bain, en conduisant ou debout.</p>
+          <p>Les données restent sur cet appareil. Le microphone est analysé en direct et aucun son n’est enregistré.</p>
+        </section>
+        <p class="fine-print">Application personnelle indépendante, non affiliée à Wim Hof ou à Innerfire. Elle ne remplace pas un accompagnement médical ou un enseignement certifié.</p>
+      </main>
+
+      <nav class="tab-bar" aria-label="Navigation principale">
+        <button class="tab-button active" data-tab="home-page"><span>≋</span>Respirer</button>
+        <button class="tab-button" data-tab="history-page"><span>⌁</span>Parcours</button>
+        <button class="tab-button" data-tab="about-page"><span>♡</span>À savoir</button>
+      </nav>
+    </section>
+
+    <section id="session-screen" class="screen session-screen hidden">
+      <button id="close-session" class="close-button" aria-label="Quitter la séance">×</button>
+
+      <div id="preparation-view" class="session-content preparation-view">
+        <div class="session-spacer"></div>
+        <h1>Installe-toi</h1>
+        <p>Assis ou allongé, le ventre libre. Pose le téléphone à portée de main et laisse les yeux se fermer si tu le souhaites.</p>
+        <p id="micro-status" class="micro-status hidden"></p>
+        <div class="session-spacer"></div>
+        <button id="begin-session" class="primary-button">Je suis prêt</button>
+      </div>
+
+      <div id="active-view" class="session-content hidden">
+        <div class="round-label" id="round-label">Cycle 1 sur 3</div>
+        <div class="phase-stage">
+          <div id="breathing-view" class="phase-view">
+            <div id="breath-label" class="phase-label">INSPIRE</div>
+            <div class="breath-orbit"><div id="breath-circle" class="breath-circle"><span id="breath-number">1</span></div></div>
+            <p>sur 30</p>
+          </div>
+          <div id="retention-view" class="phase-view hidden">
+            <div class="phase-label">LAISSE ÊTRE</div>
+            <div id="retention-time" class="large-time">0:00</div>
+            <p>Respire dès que ton corps le demande</p>
+          </div>
+          <div id="recovery-view" class="phase-view hidden">
+            <div class="phase-label">GARDE L’AIR</div>
+            <div class="recovery-ring"><svg viewBox="0 0 220 220"><circle class="ring-bg" cx="110" cy="110" r="98"/><circle id="recovery-progress" class="ring-progress" cx="110" cy="110" r="98"/></svg><span id="recovery-time">15</span></div>
+            <p>15 secondes, toujours identiques</p>
+          </div>
+          <div id="transition-view" class="phase-view hidden"><div class="wind-icon">≋</div><h1>Relâche</h1><p>Le prochain cycle arrive doucement</p></div>
+          <div id="complete-view" class="phase-view hidden"><div class="complete-icon">✓</div><h1>Séance terminée</h1><p>Rien à juger. Observe simplement comment tu te sens maintenant.</p><div id="session-results" class="session-results"></div><button id="finish-session" class="primary-button">Terminer</button></div>
+        </div>
+        <p id="session-hint" class="session-hint">L’écran reste éveillé pendant la séance</p>
+      </div>
+    </section>
+
+    <dialog id="exit-dialog"><h2>Quitter la séance ?</h2><p>La séance en cours ne sera pas enregistrée.</p><div><button id="cancel-exit" class="text-button">Continuer</button><button id="confirm-exit" class="text-button danger">Quitter</button></div></dialog>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

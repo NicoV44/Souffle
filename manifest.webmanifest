@@ -1,0 +1,12 @@
+{
+  "name": "Souffle — Respiration guidée",
+  "short_name": "Souffle",
+  "description": "Guide personnel de respiration cyclique",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#05090b",
+  "theme_color": "#05090b",
+  "lang": "fr",
+  "orientation": "portrait",
+  "icons": [{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
