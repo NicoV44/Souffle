@@ -1,0 +1,25 @@
+SOUFFLE — VERSION WEB POUR IPHONE
+
+Cette version ne nécessite pas Xcode.
+
+Pour que le microphone, l’installation sur l’écran d’accueil et le maintien de
+l’écran fonctionnent correctement sur iPhone, le dossier doit être publié sur
+une adresse HTTPS. Ouvrir simplement index.html depuis l’application Fichiers
+ne suffit pas pour ces fonctions.
+
+Une fois un lien HTTPS obtenu :
+
+1. Ouvrez le lien avec Safari sur l’iPhone.
+2. Touchez le bouton Partager de Safari.
+3. Choisissez « Sur l’écran d’accueil » puis « Ajouter ».
+4. Ouvrez Souffle depuis sa nouvelle icône.
+5. Autorisez le microphone si vous choisissez la détection de l’inspiration.
+
+Toutes les séances restent enregistrées uniquement dans le navigateur de
+l’iPhone. Aucun son n’est enregistré ou envoyé.
+
+IMPORTANT
+
+Pratiquez uniquement assis ou allongé dans un endroit sûr. Jamais dans ou près
+de l’eau, sous la douche, dans un bain, en conduisant ou dans toute situation
+où une perte de connaissance serait dangereuse.
